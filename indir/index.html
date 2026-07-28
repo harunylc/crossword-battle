@@ -82,6 +82,22 @@
       }
       .download small { display: block; font-weight: 400; font-size: 13px; opacity: .85; margin-top: 2px; }
 
+      /* Temporary: only matters to people who installed the 27.07.2026 build, which went out signed
+         with a different key. Delete this block (and the <aside> below) once nobody is on it. */
+      .notice {
+        margin: 18px 0 0;
+        padding: 13px 15px;
+        border-radius: 12px;
+        background: #fff4e2;
+        border: 1px solid #f0c885;
+        color: #6b4708;
+        font-size: 14px;
+      }
+      .notice b { display: block; margin-bottom: 3px; }
+      @media (prefers-color-scheme: dark) {
+        .notice { background: #33280f; border-color: #6b5320; color: #f5d9a3; }
+      }
+
       .meta { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0; padding: 0; list-style: none; }
       .meta li { background: var(--chip); color: var(--muted); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
 
@@ -111,9 +127,17 @@
           <p class="sub">Android sürümü</p>
         </header>
 
+        <aside class="notice">
+          <b>Daha önce indirdiysen: önce kaldır</b>
+          27 Temmuz'da indirilen sürüm farklı bir imzayla derlenmişti. Android, imzası değişen bir
+          uygulamayı üstüne kurmaz — <b style="display:inline">Uygulama yüklenmedi</b> hatası alırsın.
+          Telefonundan CrosswordBattle'ı kaldır, sonra buradan yeniden kur. Kaldırma işlemi oyundaki
+          ilerlemeni siler. İlk kez kuruyorsan bu uyarı seni ilgilendirmiyor.
+        </aside>
+
         <a class="download" href="https://github.com/harunylc/crossword-battle/releases/latest/download/CrosswordBattle.apk">
           APK'yı indir
-          <small>43.7 MB · sürüm 1.0.0</small>
+          <small>43,7 MB · sürüm 1.0.0</small>
         </a>
 
         <ul class="meta">
@@ -147,7 +171,7 @@
       </section>
 
       <a class="play" href="../">Kurmadan tarayıcıda oyna</a>
-      <footer>Sayfa 28.07.2026 07:11 tarihinde guncellendi.</footer>
+      <footer>Sayfa 28.07.2026 10:33 tarihinde guncellendi.</footer>
     </main>
   </body>
 </html>
