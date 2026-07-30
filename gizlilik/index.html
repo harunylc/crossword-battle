@@ -6,9 +6,13 @@
   Source of truth is this file; tools/deploy-web.ps1 copies web/gizlilik/ into the Pages repo and excludes
   it from the robocopy mirror (like web/indir/), because it is not part of the WebGL build output.
 
-  IMPORTANT: this text describes the app AS IT IS TODAY - no accounts, no analytics, no ads, everything
-  stored on the device. The moment an ad SDK is added, this page and the Play data-safety form both have
-  to be updated in the same release, or the store listing becomes a false declaration.
+  This URL is also the one entered in AdMob (Uygulama ayarları -> Gizlilik politikası URL'si) and inside
+  both consent messages, so it must stay at exactly this address.
+
+  IMPORTANT: this text now describes an app that shows Google AdMob ads on Android. Two rules follow.
+  First, the Play data-safety form must keep saying the same thing this page says - the answers are written
+  out box by box in docs/play-console.md section 7. Second, the WEB build has no ads at all and the text
+  below says so explicitly; if that ever changes, this page changes with it.
 -->
 <html lang="tr">
 <head>
@@ -41,11 +45,13 @@
 <body>
 
 <h1>Gizlilik Politikası</h1>
-<div class="updated">Crossword Battle · Son güncelleme: 29 Temmuz 2026</div>
+<div class="updated">Crossword Battle · Son güncelleme: 30 Temmuz 2026</div>
 
 <div class="box">
-  <strong>Özet:</strong> Crossword Battle sizden kişisel veri toplamaz. Hesap açmanız gerekmez, uygulama
-  içinde reklam yoktur ve oyun verileriniz yalnızca kendi cihazınızda saklanır.
+  <strong>Özet:</strong> Crossword Battle sizden isim, e-posta, telefon gibi kişisel bilgi istemez ve hesap
+  açmanızı gerektirmez. Oyun verileriniz yalnızca kendi cihazınızda saklanır. Android sürümünde
+  <strong>Google AdMob reklamları</strong> gösterilir; reklamların sunulabilmesi için AdMob cihazınızın
+  reklam kimliği gibi bilgilere erişir. Tarayıcıda oynanan web sürümünde <strong>hiç reklam yoktur</strong>.
 </div>
 
 <h2>Cihazınızda saklananlar</h2>
@@ -56,9 +62,60 @@
 <ul>
   <li>Girdiğiniz oyuncu adı</li>
   <li>Ses, titreşim, tema ve dil tercihleriniz</li>
-  <li>Hangi bulmacaları oynadığınız ve oyun içi ilerlemeniz</li>
+  <li>Hangi bulmacaları oynadığınız, oyun içi ilerlemeniz, canlarınız ve jetonlarınız</li>
 </ul>
 <p>Uygulamayı kaldırdığınızda bu bilgiler de cihazınızdan silinir.</p>
+
+<h2>Reklamlar</h2>
+<p>
+  Android sürümünde oyunu ücretsiz sunabilmek için <strong>Google AdMob</strong> aracılığıyla reklam
+  gösterilir. İki tür reklam vardır:
+</p>
+<ul>
+  <li><strong>Ödüllü reklam:</strong> yalnızca siz istediğinizde, karşılığında can veya ipucu kazanmak
+    için. İzlemek tamamen size bağlıdır; izlemeseniz de oyunun tamamı oynanabilir.</li>
+  <li><strong>Tam ekran reklam:</strong> birkaç maçta bir, maç bittikten sonra kısa bir ara olarak.</li>
+</ul>
+<p>
+  Reklamların gösterilebilmesi ve ilgi alanlarınıza uygun olabilmesi için AdMob ve reklam ortakları
+  şunlara erişebilir:
+</p>
+<ul>
+  <li><strong>Reklam kimliği</strong> (Android Advertising ID) — cihazınıza ait, sıfırlanabilir bir
+    tanımlayıcı</li>
+  <li><strong>Yaklaşık konum</strong> — IP adresinizden çıkarılan ülke/bölge düzeyinde bilgi. Uygulama
+    hassas (GPS) konum izni istemez</li>
+  <li><strong>Cihaz ve reklam etkileşimi bilgileri</strong> — cihaz modeli, işletim sistemi sürümü, hangi
+    reklamın gösterildiği ve görüntülenip görüntülenmediği</li>
+</ul>
+<p>
+  Bu verileri biz toplamıyor, saklamıyor ve göremiyoruz; doğrudan Google'a gidiyor. Google'ın bu verileri
+  nasıl kullandığını
+  <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google'ın
+  ortak siteler politikası</a> ve
+  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Gizlilik
+  Politikası</a> sayfalarında bulabilirsiniz.
+</p>
+
+<h2>Reklam tercihlerinizi yönetmek</h2>
+<ul>
+  <li><strong>Reklam kimliğinizi sıfırlamak veya silmek:</strong> Android'de
+    <em>Ayarlar → Google → Tüm hizmetler → Reklamlar</em> yolundan reklam kimliğinizi sıfırlayabilir ya da
+    tamamen kaldırabilirsiniz. Kaldırdığınızda reklamlar görünmeye devam eder, ancak ilgi alanlarınıza göre
+    kişiselleştirilmez.</li>
+  <li><strong>Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre:</strong> uygulamayı ilk açtığınızda bir
+    rıza ekranı gösterilir ve reklamların kişiselleştirilmesini kabul edip etmediğinizi seçersiniz.
+    Kararınızı sonradan oyun içindeki <em>Ayarlar → Gizlilik seçenekleri</em> bölümünden değiştirebilirsiniz.
+    Rıza vermezseniz oyun tam olarak çalışmaya devam eder.</li>
+  <li><strong>Belirli ABD eyaletleri:</strong> verinizin satılmasını veya paylaşılmasını reddetme
+    seçeneğiniz aynı <em>Ayarlar → Gizlilik seçenekleri</em> ekranından sunulur.</li>
+</ul>
+
+<h2>Web sürümü</h2>
+<p>
+  Tarayıcıda oynanan sürümde reklam gösterilmez, reklam kimliği okunmaz ve analitik aracı çalışmaz. Reklam
+  yalnızca mobil (Android) sürümde vardır.
+</p>
 
 <h2>Çevrimiçi oynarken</h2>
 <p>
@@ -67,23 +124,26 @@
   gösterilen oyuncu adınız. Bu iletişim eşleştirme dışında bir amaçla kaydedilmez.
 </p>
 
-<h2>Reklam ve analitik</h2>
-<p>
-  Uygulamada şu anda reklam, analitik veya izleme (tracking) aracı bulunmamaktadır. İleride reklam
-  eklenmesi durumunda bu sayfa güncellenecek ve Google Play üzerindeki veri güvenliği bildirimi de aynı
-  sürümde buna göre değiştirilecektir.
-</p>
-
 <h2>Çocukların gizliliği</h2>
 <p>
-  Oyun çocuklara yönelik olarak tasarlanmamıştır ve kimseden yaş, konum veya kimlik bilgisi istemez.
-  Toplanan kişisel veri olmadığı için çocuklara ait veri de toplanmaz.
+  Oyun çocuklara yönelik olarak tasarlanmamıştır; hedef kitlesi 13 yaş ve üzeridir. Uygulama kimseden yaş,
+  hassas konum veya kimlik bilgisi istemez. 13 yaşın altındaki bir çocuğun verisinin işlendiğini
+  düşünüyorsanız aşağıdaki adresten bize ulaşın.
 </p>
 
 <h2>Haklarınız</h2>
 <p>
-  Sizinle ilişkilendirilebilecek bir veri tutmadığımız için silinmesini talep edebileceğiniz bir kayıt da
-  bulunmuyor. Cihazınızdaki tüm oyun verisini uygulamayı kaldırarak silebilirsiniz.
+  Sizi kimliklendirebilecek bir kayıt tutmadığımız için bizde silinmesini talep edebileceğiniz bir veriniz
+  bulunmuyor. Cihazınızdaki tüm oyun verisini uygulamayı kaldırarak silebilirsiniz. Reklamlarla ilgili
+  verileriniz için yukarıdaki "Reklam tercihlerinizi yönetmek" bölümündeki yolları kullanabilir, ayrıca
+  Google'a doğrudan başvurabilirsiniz.
+</p>
+
+<h2>Bu politikadaki değişiklikler</h2>
+<p>
+  Politika değişirse bu sayfa güncellenir ve yukarıdaki "Son güncelleme" tarihi değişir. Toplanan veriyi
+  genişleten bir değişiklik olursa Google Play üzerindeki veri güvenliği bildirimi de aynı sürümde
+  güncellenir.
 </p>
 
 <h2>İletişim</h2>
