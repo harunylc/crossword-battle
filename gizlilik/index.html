@@ -13,6 +13,16 @@
   First, the Play data-safety form must keep saying the same thing this page says - the answers are written
   out box by box in docs/play-console.md section 7. Second, the WEB build has no ads at all and the text
   below says so explicitly; if that ever changes, this page changes with it.
+
+  Two things leave the device, not one. AdMob is the obvious one; the other is online play, which routes
+  the match through Unity Relay (UGS) and sends the typed player name to the opponent - see "Cevrimici
+  oynarken". Solo play sends nothing, and Unity Analytics / Cloud Diagnostics / Performance Reporting are
+  all disabled in ProjectSettings/UnityConnectSettings.asset. If any of that changes, so does this page.
+
+  The list of data under "Reklamlar" is not written from memory: it is Google's own published disclosure
+  for the SDK version we ship (Unity plugin 11.3.0 -> play-services-ads 25.4.0),
+  https://developers.google.com/admob/unity/privacy/play-data-disclosure. Re-read that page when the
+  plugin is upgraded; if its table changed, this section and the Play form both change with it.
 -->
 <html lang="tr">
 <head>
@@ -45,22 +55,24 @@
 <body>
 
 <h1>Gizlilik Politikası</h1>
-<div class="updated">Crossword Battle · Son güncelleme: 30 Temmuz 2026</div>
+<div class="updated">Crossword Battle · Son güncelleme: 2 Ağustos 2026</div>
 
 <div class="box">
-  <strong>Özet:</strong> Crossword Battle sizden isim, e-posta, telefon gibi kişisel bilgi istemez ve hesap
-  açmanızı gerektirmez. Oyun verileriniz yalnızca kendi cihazınızda saklanır. Android sürümünde
-  <strong>Google AdMob reklamları</strong> gösterilir; reklamların sunulabilmesi için AdMob cihazınızın
-  reklam kimliği gibi bilgilere erişir. Tarayıcıda oynanan web sürümünde <strong>hiç reklam yoktur</strong>.
+  <strong>Özet:</strong> Crossword Battle sizden e-posta, telefon, adres gibi kişisel bilgi istemez ve hesap
+  açmanızı gerektirmez. Yalnızca bir <strong>oyuncu adı</strong> yazarsınız; bu ad cihazınızda durur ve
+  sadece çevrimiçi maç yaptığınızda rakibinize iletilir. Oyun ilerlemeniz yalnızca kendi cihazınızda
+  saklanır. Android sürümünde <strong>Google AdMob reklamları</strong> gösterilir; reklamların
+  sunulabilmesi için AdMob cihazınızın reklam kimliği gibi bilgilere erişir. Tarayıcıda oynanan web
+  sürümünde <strong>hiç reklam yoktur</strong>.
 </div>
 
 <h2>Cihazınızda saklananlar</h2>
 <p>
-  Oyun; ayarlarınızı ve ilerlemenizi cihazınızın kendi depolama alanında tutar. Bunlar hiçbir sunucuya
-  gönderilmez ve bizim tarafımızdan görülemez:
+  Oyun; ayarlarınızı ve ilerlemenizi cihazınızın kendi depolama alanında tutar. Bunlar bizim
+  tarafımızdan görülemez ve bir sunucuda saklanmaz:
 </p>
 <ul>
-  <li>Girdiğiniz oyuncu adı</li>
+  <li>Girdiğiniz oyuncu adı (tek istisna: çevrimiçi maçta rakibinize gönderilir — aşağıya bakın)</li>
   <li>Ses, titreşim, tema ve dil tercihleriniz</li>
   <li>Hangi bulmacaları oynadığınız, oyun içi ilerlemeniz, canlarınız ve jetonlarınız</li>
 </ul>
@@ -77,31 +89,43 @@
   <li><strong>Tam ekran reklam:</strong> birkaç maçta bir, maç bittikten sonra kısa bir ara olarak.</li>
 </ul>
 <p>
-  Reklamların gösterilebilmesi ve ilgi alanlarınıza uygun olabilmesi için AdMob ve reklam ortakları
-  şunlara erişebilir:
+  Reklamların gösterilebilmesi, ölçülebilmesi ve ilgi alanlarınıza uygun olabilmesi için Google Mobil
+  Reklamlar SDK'sı uygulamadan şu bilgileri toplar:
 </p>
 <ul>
-  <li><strong>Reklam kimliği</strong> (Android Advertising ID) — cihazınıza ait, sıfırlanabilir bir
-    tanımlayıcı</li>
-  <li><strong>Yaklaşık konum</strong> — IP adresinizden çıkarılan ülke/bölge düzeyinde bilgi. Uygulama
-    hassas (GPS) konum izni istemez</li>
-  <li><strong>Cihaz ve reklam etkileşimi bilgileri</strong> — cihaz modeli, işletim sistemi sürümü, hangi
-    reklamın gösterildiği ve görüntülenip görüntülenmediği</li>
+  <li><strong>Cihaz ve hesap tanımlayıcıları</strong> — başta <em>Android reklam kimliği</em> (sıfırlanabilir
+    reklam tanımlayıcısı) olmak üzere uygulama kümesi kimliği (app set ID) ve varsa cihazda oturum açılmış
+    hesaba ait tanımlayıcılar</li>
+  <li><strong>IP adresi</strong> — bundan cihazınızın <em>yaklaşık</em> konumu (ülke/bölge düzeyi)
+    tahmin edilir. Uygulama hassas (GPS) konum izni istemez, istemeye de gerek duymaz</li>
+  <li><strong>Uygulama kullanımına dair etkileşimler</strong> — uygulamanın açılması, bir reklamın
+    gösterilmesi, izlenmesi, kapatılması veya tıklanması gibi olaylar</li>
+  <li><strong>Tanılama bilgileri</strong> — cihaz modeli, işletim sistemi sürümü, açılış süresi, takılma ve
+    benzeri uygulama performansı ölçümleri</li>
 </ul>
 <p>
-  Bu verileri biz toplamıyor, saklamıyor ve göremiyoruz; doğrudan Google'a gidiyor. Google'ın bu verileri
-  nasıl kullandığını
-  <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google'ın
-  ortak siteler politikası</a> ve
+  Bu bilgiler reklam sunmak ve ölçmek, analiz yapmak ve sahte/geçersiz reklam trafiğini engellemek için
+  kullanılır. Verileri <strong>biz toplamıyor, saklamıyor ve göremiyoruz</strong>: uygulamadan doğrudan
+  <strong>reklam ortağımız Google'a</strong> gider ve Google Play'in tanımıyla bu, veriyi üçüncü tarafla
+  <em>paylaşmak</em> sayılır. Aktarım TLS ile şifrelenir. Yukarıdaki liste, uygulamada kullandığımız
+  sürümün Google tarafından
+  <a href="https://developers.google.com/admob/unity/privacy/play-data-disclosure" target="_blank" rel="noopener">yayımlanan
+  veri bildirimine</a> dayanır; tahmine değil.
+</p>
+<p>
+  Google'ın bu verileri nasıl kullandığını
+  <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">"Google'ın
+  hizmetlerini kullanan siteler ve uygulamalardan aldığı bilgileri nasıl kullandığı"</a> sayfasında ve
   <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Gizlilik
-  Politikası</a> sayfalarında bulabilirsiniz.
+  Politikası'nda</a> okuyabilirsiniz.
 </p>
 
 <h2>Reklam tercihlerinizi yönetmek</h2>
 <ul>
-  <li><strong>Reklam kimliğinizi sıfırlamak veya silmek:</strong> Android'de
-    <em>Ayarlar → Google → Tüm hizmetler → Reklamlar</em> yolundan reklam kimliğinizi sıfırlayabilir ya da
-    tamamen kaldırabilirsiniz. Kaldırdığınızda reklamlar görünmeye devam eder, ancak ilgi alanlarınıza göre
+  <li><strong>Reklam kimliğinizi sıfırlamak veya silmek:</strong> Android'de <em>Ayarlar → Gizlilik →
+    Reklamlar</em> (bazı cihazlarda <em>Ayarlar → Google → Tüm hizmetler → Reklamlar</em>) yolundan reklam
+    kimliğinizi sıfırlayabilir ya da tamamen kaldırabilirsiniz. Sıfırladığınızda o ana kadar biriken
+    ilgi alanı geçmişiyle bağınız kopar; tamamen kaldırdığınızda reklamlar görünmeye devam eder, ancak
     kişiselleştirilmez.</li>
   <li><strong>Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre:</strong> uygulamayı ilk açtığınızda bir
     rıza ekranı gösterilir ve reklamların kişiselleştirilmesini kabul edip etmediğinizi seçersiniz.
@@ -119,9 +143,29 @@
 
 <h2>Çevrimiçi oynarken</h2>
 <p>
-  İki kişilik çevrimiçi maçlarda cihazlar birbirine Unity Relay hizmeti üzerinden bağlanır. Bu bağlantı
-  sırasında yalnızca oyunun işleyişi için gereken veri aktarılır: oda kodu, oyun hamleleri ve rakibinize
-  gösterilen oyuncu adınız. Bu iletişim eşleştirme dışında bir amaçla kaydedilmez.
+  Arkadaşınızla çevrimiçi maç yaptığınızda iki cihaz birbirine doğrudan değil, <strong>Unity Relay</strong>
+  (Unity Gaming Services) adlı üçüncü taraf bir hizmet üzerinden bağlanır. Maç boyunca yalnızca oyunun
+  işleyişi için gereken şeyler aktarılır:
+</p>
+<ul>
+  <li><strong>Girdiğiniz oyuncu adı</strong> — maç başında rakibinize gönderilir ve onun ekranında
+    görünür. Bu ad tamamen sizin yazdığınız şeydir; gerçek adınızı yazmak zorunda değilsiniz</li>
+  <li><strong>Oda kodu</strong> — arkadaşınızın maça katılabilmesi için Relay'in ürettiği geçici kod</li>
+  <li><strong>Oyun hamleleri</strong> — hangi harfin nereye konduğu, puanlar ve sıra bilgisi</li>
+</ul>
+<p>
+  Çevrimiçi oynayabilmek için Unity'nin hizmetine <strong>isimsiz (anonim) olarak</strong> bağlanılır:
+  hesap açılmaz, e-posta veya şifre istenmez; Unity yalnızca oturumu tanıyabilmek için anonim bir kimlik
+  üretir ve bağlantı sırasında cihazınızın IP adresini görür. <strong>Bizim bir sunucumuz yok</strong> —
+  oyuncu adınızı, hamlelerinizi veya maç geçmişinizi hiçbir yerde saklamıyoruz; bu veriler yalnızca maç
+  sürerken iki cihaz arasında iletilir. Unity'nin verileri nasıl işlediğini
+  <a href="https://unity.com/legal/privacy-policy" target="_blank" rel="noopener">Unity Gizlilik
+  Politikası</a> sayfasında okuyabilirsiniz.
+</p>
+<p>
+  <strong>Tek başınıza oynarken hiçbir şey gönderilmez.</strong> Alıştırma maçları, bulmaca çözme ve
+  aynı cihazda sırayla oynama tamamen çevrimdışı çalışır; bu modlarda oyuncu adınız cihazınızdan çıkmaz.
+  Oyun ayrıca kullanım istatistiği veya çökme raporu toplayan bir araç çalıştırmaz.
 </p>
 
 <h2>Çocukların gizliliği</h2>
